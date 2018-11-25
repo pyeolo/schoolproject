@@ -1,0 +1,48 @@
+package merge;
+
+/* This is a program that utilizes merge sort method*/
+
+public class Merge {
+
+    public static void main(String[] args) {
+        int[] arr = {2, 4, 6, 8, 10, 9, 7, 5, 3, 1};
+        
+        System.out.println("Unsorted List: ");
+        for (int element : arr){
+            System.out.print(element + " ");
+        }
+        
+        sortDescending(arr, 0, arr.length);
+        System.out.println(" ");
+        
+        System.out.println("Sorted List: ");
+        for (int element : arr){
+            System.out.print(element + " ");
+        }
+    }//end of main
+    
+    public static void sortDescending(int[] a, int low, int high){
+        int N = high - low;
+        if (N <= 1)
+            return;
+        int mid = low + N/2;
+        
+        sortDescending(a, low, mid);
+        sortDescending(a, mid, high);
+        
+        int[] temp = new int[N];
+        int i = low, j = mid;
+        for (int k = 0; k < N; k++){
+            if (i == mid)
+                temp[k] = a[j++];
+            else if (j == high)
+                temp[k] = a[i++];
+            else if (a[j] > a[i])
+                temp[k] = a[j++];
+            else
+                temp[k] = a[i++];
+        }
+        for (int k = 0; k < N; k++)
+            a[low + k] = temp[k];
+    }//end of sort method
+}//end of class
