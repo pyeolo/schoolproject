@@ -1,0 +1,31 @@
+package leapyear;
+
+/*This is a progam that tells whether a year is a leap year or not*/
+
+public class LeapYear {
+    
+    public static void main(String[] args) {
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        System.out.print("Enter a year: ");
+        int year = sc.nextInt();
+        if ((year%4 == 0) && (year%100 != 0) || (year%400 == 0) ){
+            System.out.println("IT IS A LEAP YEAR!");
+        } else {
+            System.out.println("IT IS NOT A LEAP YEAR!");
+        }
+        System.out.println();
+        System.out.print("Try again? <y/n>");
+        char a = sc.next().charAt(0);
+        again(a);
+    } //end of main method
+    
+    //repeat method
+    static void again (char a){
+        if (a == 'y'){
+            main(null);
+        }
+        else {
+            System.out.println("Have a nice day!");
+        }
+    }//end of repeat method
+}//end of class
